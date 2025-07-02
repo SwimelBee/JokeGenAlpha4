@@ -2,6 +2,11 @@ package com.example.jokegenalpha4.JokeController;
 
 import com.example.jokegenalpha4.Model.Joke;
 import com.example.jokegenalpha4.Service.JokeService;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,23 +20,23 @@ import java.util.logging.Logger;
  */
 @RestController
 @RequestMapping("/jokes")
-class JokeController {
+public class JokeController {
 
     private static final Logger logger = Logger.getLogger(JokeController.class.getName());
     private final JokeService jokeserv;
 
     /**
      * Constructor with JokeService dependency.
-     * 
+     *
      * @param jokeserv The joke service
      */
-    JokeController(JokeService jokeserv) {
+    public JokeController(JokeService jokeserv) {
         this.jokeserv = jokeserv;
     }
 
     /**
      * Get all jokes.
-     * 
+     *
      * @return ResponseEntity with a list of all jokes
      */
     @GetMapping("/")
@@ -47,7 +52,7 @@ class JokeController {
 
     /**
      * Get a random joke.
-     * 
+     *
      * @return ResponseEntity with a random joke, or 404 if no jokes exist
      */
     @GetMapping("/random")
@@ -64,7 +69,7 @@ class JokeController {
 
     /**
      * Add a new joke.
-     * 
+     *
      * @param joke The joke to add
      * @return ResponseEntity with the added joke
      */
