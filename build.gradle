@@ -45,6 +45,25 @@ dependencyManagement {
     }
 }
 
+graalvmNative {
+    binaries {
+        named("main") {
+            imageName.set("jokegen")
+            buildArgs.add("--no-fallback")
+        }
+    }
+}
+springBoot {
+    mainClass = 'com.example.jokegenalpha4.JokeGenAlpha4Application'
+}
+
+// 1) Enable a plain JAR alongside Spring Boot’s executable JAR
+tasks.named('jar') {
+    enabled = true
+    archiveClassifier.set('plain')
+}
+
+
 hibernate {
     enhancement {
         enableAssociationManagement = true
