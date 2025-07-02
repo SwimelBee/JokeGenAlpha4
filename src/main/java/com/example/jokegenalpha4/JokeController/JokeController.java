@@ -4,6 +4,7 @@ import com.example.jokegenalpha4.Model.Joke;
 import com.example.jokegenalpha4.Service.JokeService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -11,12 +12,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/jokes")
-class JokeController {
+public class JokeController {
 
     private final JokeService jokeserv;
 
 
-    JokeController(JokeService jokeserv) {
+    public JokeController(JokeService jokeserv) {
         this.jokeserv = jokeserv;
     }
 
@@ -31,7 +32,7 @@ class JokeController {
     }
 
     @PostMapping("/")
-    public Joke addJoke(Joke joke) {
+    public Joke addJoke(@RequestBody Joke joke) {
         return jokeserv.addJoke(joke);
     }
 }
