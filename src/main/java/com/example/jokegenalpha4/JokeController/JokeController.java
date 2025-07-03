@@ -60,7 +60,7 @@ public class JokeController {
         try {
             return jokeserv.getRandomJoke()
                     .map(ResponseEntity::ok)
-                    .orElse(ResponseEntity.notFound().build());
+                    .orElse(ResponseEntity.ok().build());
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Error retrieving random joke", e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
@@ -80,7 +80,7 @@ public class JokeController {
                 return ResponseEntity.badRequest().build();
             }
             Joke savedJoke = jokeserv.addJoke(joke);
-            return ResponseEntity.status(HttpStatus.CREATED).body(savedJoke);
+            return ResponseEntity.ok(savedJoke);
         } catch (IllegalArgumentException e) {
             logger.log(Level.WARNING, "Invalid joke data", e);
             return ResponseEntity.badRequest().build();

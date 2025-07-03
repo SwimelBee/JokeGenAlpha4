@@ -46,6 +46,7 @@ public class JokeServiceIntegrationTest {
         when(jokeRepository.findAll()).thenReturn(allJokes);
         when(jokeRepository.findById(1L)).thenReturn(Optional.of(joke1));
         when(jokeRepository.findById(2L)).thenReturn(Optional.of(joke2));
+        when(jokeRepository.findRandomJoke()).thenReturn(Optional.of(joke1)); // Mock findRandomJoke to return joke1
         when(jokeRepository.save(any(Joke.class))).thenAnswer(invocation -> {
             Joke joke = invocation.getArgument(0);
             if (joke.getId() == null) {
