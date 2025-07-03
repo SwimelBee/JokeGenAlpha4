@@ -13,23 +13,6 @@ import java.util.Optional;
  * Repository interface for Joke entity with exception handling and bug prevention.
  */
 public interface JokeRepository extends JpaRepository<Joke, Long> {
-
-    /**
-     * Find a joke by its ID with explicit exception handling.
-     * 
-     * @param id The ID of the joke to find
-     * @return An Optional containing the joke if found, or empty if not found
-     * @throws DataAccessException If there's an issue accessing the database
-     */
-    @Override
-    Optional<Joke> findById(Long id) throws DataAccessException;
-
-    /**
-     * Find all jokes with explicit exception handling.
-     * 
-     * @return A list of all jokes
-     * @throws DataAccessException If there's an issue accessing the database
-     */
     @Override
     List<Joke> findAll() throws DataAccessException;
 

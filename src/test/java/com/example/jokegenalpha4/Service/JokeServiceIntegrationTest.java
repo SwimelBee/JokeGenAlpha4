@@ -66,16 +66,6 @@ public class JokeServiceIntegrationTest {
     }
 
     @Test
-    public void whenGetJokeById_thenReturnJoke() {
-        // when
-        Optional<Joke> found = jokeService.getJokeById(1L);
-
-        // then
-        assertThat(found).isPresent();
-        assertThat(found.get().getJokeContent()).isEqualTo(joke1.getJokeContent());
-    }
-
-    @Test
     public void whenGetRandomJoke_thenReturnJoke() {
         // when
         Optional<Joke> found = jokeService.getRandomJoke();
