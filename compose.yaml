@@ -1,9 +1,22 @@
 services:
-  postgres:
-    image: 'postgres:latest'
+  db:
+    image: postgres:15
     environment:
-      - 'POSTGRES_DB=mydatabase'
-      - 'POSTGRES_PASSWORD=secret'
-      - 'POSTGRES_USER=myuser'
+      POSTGRES_DB:     mydatabase
+      POSTGRES_USER:   postgres
+      POSTGRES_PASSWORD: Hemoglobin123.
     ports:
-      - '5432'
+      - "5432:5432"
+
+  app:
+    image: sha256:c91b08b67b5352bfed205e78d64da070d72cc59a41d6ae0e42c14031cfc00681
+    build:
+      context: .
+    environment:
+      SPRING_DATASOURCE_URL:      jdbc:postgresql://db:5432/mydatabase
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: Hemoglobin123.
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
