@@ -13,6 +13,12 @@ import java.util.Optional;
  * Repository interface for Joke entity with exception handling and bug prevention.
  */
 public interface JokeRepository extends JpaRepository<Joke, Long> {
+    /**
+     * Find all jokes with explicit exception handling.
+     *
+     * @return A list of all jokes
+     * @throws DataAccessException If there's an issue accessing the database
+     */
     @Override
     List<Joke> findAll() throws DataAccessException;
 
